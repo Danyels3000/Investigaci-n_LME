@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+    <link rel="stylesheet" href="css/IMC.css">
+</head>
+<body>
+    <section>
+        <form class="formulario">
+            <h1>Calculadora y tabla de IMC</h1>
+            <label for="peso">Peso Kg:</label>
+            <input type="text" name="peso" id="peso" placeholder="Ingrese su peso en kg"/>
+            <label for="altura">Altura:</label>
+            <input type="text" name="altura" id="altura" placeholder="Ingrese su altura en cm"/>
+            <button type="button" onclick="calcularIMC()">Calcular IMC</button>
+            <div class="result" id="resultado"></div>
+            <div class="img">
+                <img src="img/IMC.png">
+            </div>
+            </section>
+        </form>
+    </section>
+</body>
+</html>
+
+<script>
+    function calcularIMC() {
+        const peso = parseFloat(document.getElementById('peso').value);
+        const altura = parseFloat(document.getElementById('altura').value) / 100;
+        if (isNaN(peso) || isNaN(altura)) {
+            document.getElementById('resultado').innerText = 'Por favor, ingrese valores válidos';
+            return;
+        }
+        const imc = (peso / (altura * altura)).toFixed(2);
+        let estado = '';
+        document.getElementById('resultado').innerText = `Su IMC es ${imc}`;
+    }
+</script>
+
